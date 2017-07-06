@@ -6,6 +6,7 @@ Aktiva-V2の本体用リポジトリです。
 * UnityYAMLMerge
 * Visual Studio
 * editorconfig plugin
+* Artistic Style 3.0
 
 ### Unity 5.6.2
 [ここ](https://unity3d.com/jp/get-unity/update)からダウンロードしてインストールを行う。
@@ -41,6 +42,40 @@ Aktiva-V2の本体用リポジトリです。
 ### Editorconfig Plugin
 Visual Studio 2017であれば自動的にインストールされている。
 その他のエディタを使用する場合は[ここ](http://editorconfig.org/#download)から自分が使用してるエディタにあわせてプラグインを導入すること。
+
+### Artistic Style 3.0
+[ここ](https://sourceforge.net/projects/astyle/files/astyle/astyle%203.0/)からダウンロード及びインストールを行う。
+
+もしくは、brewでインストールを行う。
+```sh
+brew install astyle
+```
+
+gitのpre-commitに以下を設定する。
+`.git/hooks/pre-commit` という名前で以下の内容を記述する。
+```sh
+OPTIONS="--options=./.astyle"
+
+RETURN=0
+ASTYLE=$(which astyle)
+if [ $? -ne 0 ]; then
+	echo "[!] astyle not installed. Unable to check source file format policy." >&2
+	exit 1
+fi
+
+FILES=`git diff --cached --name-only --diff-filter=ACMR | grep -E "\.(cs)$"`
+for FILE in $FILES; do
+	$ASTYLE $OPTIONS $FILE
+	git add $FILE
+done
+
+exit $RETURN
+```
+
+実行権限を追加する。
+```sh
+chmod 755 .git/hooks/pre-commit
+```
 
 ## セットアップ
 1. 次のコマンドを実行する。
