@@ -9,7 +9,7 @@ Aktiva-V2の本体用リポジトリです。
 * Artistic Style 3.0
 
 ### Unity 5.6.2
-[ここ](https://unity3d.com/jp/get-unity/update)からダウンロードしてインストールを行う。
+[ここ](https://unity3d.com/jp/get-unity/download/archive)からUnity 5.6.2を選択しインストールを行う。
 
 ### UnityYAMLMerge
 `.git/config` に以下を追記する。Unityのインストールを標準と異なる場所にしている場合は、パスを適切に変更するように。
