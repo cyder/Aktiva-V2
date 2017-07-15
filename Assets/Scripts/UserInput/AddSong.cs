@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace UserInputs
@@ -36,6 +36,11 @@ namespace UserInputs
       {
         DataUpdated();
       }
+    }
+
+    public int GetData(int index)
+    {
+      return data[index];
     }
   }
 }
