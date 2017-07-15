@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using UnityEngine;
 using UserInputs;
 
@@ -36,8 +36,13 @@ public class UserInputManager : MonoBehaviour
     }
   }
 
-  public static bool GetInput(UserInputCode code)
+  public static bool GetUpdateFlag(UserInputCode code)
   {
     return userInput[(int)code].GetUpdateFlag();
+  }
+
+  public static UserInput GetUserInput(UserInputCode code)
+  {
+    return userInput[(int)code];
   }
 }
