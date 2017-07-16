@@ -2,17 +2,17 @@
 Aktiva-V2の本体用リポジトリです。
 
 ## 必要環境
-* Unity 5.6.2
+* Unity 5.6.1
 * UnityYAMLMerge
 * Visual Studio
 * editorconfig plugin
 * Artistic Style 3.0
 
-### Unity 5.6.2
-[ここ](https://unity3d.com/jp/get-unity/update)からダウンロードしてインストールを行う。
+### Unity 5.6.1
+[ここ](https://unity3d.com/jp/get-unity/download/archive)からUnity 5.6.1を選択しインストールを行う。
 
 ### UnityYAMLMerge
-`.git/config` に以下を追記する。Unityのインストールを標準と異なる場所にしている場合は、パスを適切に変更するように。
+`.git/config` に以下を追記する。Unityのインストールを標準と異なる場所にしている場合は、パスを適切に変更するように。
 
 #### Windows
 ```
@@ -36,8 +36,8 @@ Aktiva-V2の本体用リポジトリです。
 
 ### Visual Studio
 エディタはVisual Studioを推奨する。
-[ここ](https://www.visualstudio.com/ja/downloads/)からダウンロード及びインストールを行うこと。
-また、UnityのPreferenceメニューから、External Toolsを選択し、External Script Editorから使用するエディタを登録すること。
+[ここ](https://www.visualstudio.com/ja/downloads/)からダウンロード及びインストールを行うこと。
+また、UnityのPreferenceメニューから、External Toolsを選択し、External Script Editorから使用するエディタを登録すること。
 
 ### Editorconfig Plugin
 Visual Studio 2017であれば自動的にインストールされている。
@@ -80,7 +80,7 @@ chmod 755 .git/hooks/pre-commit
 ## セットアップ
 1. 次のコマンドを実行する。
 ```sh
-git clone git@github.com:cyder-akashi/Aktiva-V2.git
+git clone git@github.com:cyder-akashi/Aktiva-V2.git
 cd Aktiva-V2
 ```
 2. Unityでフォルダを開く。
