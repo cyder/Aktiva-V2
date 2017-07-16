@@ -30,9 +30,9 @@ public class UserInputManager : MonoBehaviour
 
   void Update()
   {
-    foreach (UserInputCode code in Enum.GetValues(typeof(UserInputCode)))
+    foreach (UserInput input in userInput)
     {
-      userInput[(int)code].Update();
+      input.Update();
     }
   }
 
