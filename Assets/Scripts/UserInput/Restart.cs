@@ -5,6 +5,8 @@ namespace UserInputs
 {
   public class Restart : UserInput
   {
+    public Restart() : base("Restart") { }
+
     protected override void ResetData()
     {
     }

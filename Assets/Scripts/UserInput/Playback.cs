@@ -5,6 +5,8 @@ namespace UserInputs
 {
   public class Playback : UserInput
   {
+    public Playback() : base("Playback") { }
+
     protected override void ResetData()
     {
     }

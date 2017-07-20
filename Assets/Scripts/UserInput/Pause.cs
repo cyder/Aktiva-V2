@@ -5,6 +5,8 @@ namespace UserInputs
 {
   public class Pause : UserInput
   {
+    public Pause() : base("Pause") { }
+
     protected override void ResetData()
     {
     }

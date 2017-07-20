@@ -5,6 +5,8 @@ namespace UserInputs
 {
   public class Stop : UserInput
   {
+    public Stop() : base("Stop") { }
+
     protected override void ResetData()
     {
     }

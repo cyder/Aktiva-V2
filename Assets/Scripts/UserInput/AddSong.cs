@@ -7,6 +7,8 @@ namespace UserInputs
   {
     List<int> data = new List<int>();
 
+    public AddSong() : base("AddSong") { }
+
     protected override void ResetData()
     {
       data.Clear();

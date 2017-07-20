@@ -5,6 +5,8 @@ namespace UserInputs
 {
   public class FastForward : UserInput
   {
+    public FastForward() : base("FastForward") { }
+
     protected override void ResetData()
     {
     }

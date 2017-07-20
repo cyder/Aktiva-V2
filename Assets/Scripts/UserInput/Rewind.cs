@@ -5,6 +5,8 @@ namespace UserInputs
 {
   public class Rewind : UserInput
   {
+    public Rewind() : base("Rewind") { }
+
     protected override void ResetData()
     {
     }
