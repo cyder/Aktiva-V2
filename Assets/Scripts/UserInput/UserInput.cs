@@ -1,4 +1,4 @@
-﻿namespace UserInputs
+﻿﻿namespace UserInputs
 {
   public abstract class UserInput
   {
@@ -29,7 +29,7 @@
       this.userInputName = userInputName;
     }
 
-    public void DataUpdated()
+    public void OnDataUpdated()
     {
       updateFlag = true;
     }

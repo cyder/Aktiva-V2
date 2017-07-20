@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace UserInputs
@@ -15,7 +15,7 @@ namespace UserInputs
     {
       if (Input.GetKeyDown(KeyCode.RightArrow))
       {
-        DataUpdated();
+        OnDataUpdated();
       }
     }
   }

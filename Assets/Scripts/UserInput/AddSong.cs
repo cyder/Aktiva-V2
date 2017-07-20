@@ -1,4 +1,4 @@
-﻿﻿using System.Collections.Generic;
+﻿﻿﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace UserInputs
@@ -36,7 +36,7 @@ namespace UserInputs
 
       if (data.Count != 0)
       {
-        DataUpdated();
+        OnDataUpdated();
       }
     }
 

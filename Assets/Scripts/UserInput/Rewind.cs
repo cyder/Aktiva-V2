@@ -15,7 +15,7 @@ namespace UserInputs
     {
       if (Input.GetKeyDown(KeyCode.LeftAlt))
       {
-        DataUpdated();
+        OnDataUpdated();
       }
     }
   }
