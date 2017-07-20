@@ -30,7 +30,7 @@ public class UserInputManager : MonoBehaviour
 
   void Update()
   {
-    foreach (UserInput input in userInput)
+    foreach (var input in userInput)
     {
       input.Update();
     }
