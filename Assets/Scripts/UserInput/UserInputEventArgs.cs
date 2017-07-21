@@ -11,11 +11,16 @@ namespace UserInputs
       {
         return _userInputName;
       }
+
+      private set
+      {
+        _userInputName = value;
+      }
     }
 
     public UserInputEventArgs(string userInputName)
     {
-      _userInputName = userInputName;
+      this.userInputName = userInputName;
     }
   }
 }
