@@ -34,15 +34,10 @@
       updateFlag = true;
     }
 
-    public void Reset()
+    public void Update()
     {
       updateFlag = false;
       ResetData();
-    }
-
-    public void Update()
-    {
-      Reset();
       UpdateData();
     }
 
