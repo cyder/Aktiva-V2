@@ -1,11 +1,12 @@
-﻿﻿﻿using System.Collections.Generic;
+﻿﻿﻿﻿using System.Collections.Generic;
 using UnityEngine;
+using SongUtility;
 
 namespace UserInputs
 {
   public class AddSong : UserInput
   {
-    List<int> data = new List<int>();
+    List<Song> data = new List<Song>();
 
     public AddSong() : base("AddSong") { }
 
@@ -19,19 +20,19 @@ namespace UserInputs
       // 曲ID1の追加
       if (Input.GetKeyDown(KeyCode.Alpha1))
       {
-        data.Add(1);
+        data.Add(new Song(1));
       }
 
       // 曲ID2の追加
       if (Input.GetKeyDown(KeyCode.Alpha2))
       {
-        data.Add(2);
+        data.Add(new Song(2));
       }
 
       // 曲ID3の追加
       if (Input.GetKeyDown(KeyCode.Alpha3))
       {
-        data.Add(3);
+        data.Add(new Song(3));
       }
 
       if (data.Count != 0)
@@ -40,7 +41,7 @@ namespace UserInputs
       }
     }
 
-    public int GetData(int index)
+    public Song GetData(int index)
     {
       return data[index];
     }
