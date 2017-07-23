@@ -15,7 +15,10 @@ public class RootSceneManager : MonoBehaviour
 
   void Update()
   {
-    // ここでcurrentSceneを変更する
+    if (currentScene == SceneName.StandbyScene && SongManager.numStandBySong() > 0)
+    {
+      currentScene = SceneName.SongListScene;
+    }
   }
 
   void LateUpdate()
