@@ -13,6 +13,25 @@
       danceScore = new DanceScore();
       movie = new Movie();
       songId = id;
+
+      // 仮実装、本来ならサーバにデータを取りに行く
+      switch (id)
+      {
+        case 1:
+          title = "曲名1";
+          artist = "アーティスト1";
+          break;
+
+        case 2:
+          title = "曲名2";
+          artist = "アーティスト2";
+          break;
+
+        case 3:
+          title = "曲名3";
+          artist = "アーティスト3";
+          break;
+      }
     }
   }
 }
