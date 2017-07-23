@@ -1,3 +1,5 @@
+﻿using System;
+using System.Collections;
 ﻿﻿using UnityEngine;
 using UnityEngine.UI;
 using SongUtility;
@@ -32,6 +34,10 @@ public class Popup : MonoBehaviour
     songTitle.text = song.title;
     Text artistName = popup.transform.Find("ArtistName").gameObject.GetComponent<Text>();
     artistName.text = song.artist;
+    StartCoroutine(DelayMethod(3.0f, () =>
+    {
+      Clear();
+    }));
   }
 
   // 出ているポップアップの削除
@@ -41,5 +47,12 @@ public class Popup : MonoBehaviour
     {
       Destroy(popup);
     }
+  }
+
+  // メソッドを指定時間遅らせて実行
+  IEnumerator DelayMethod(float waitTime, Action action)
+  {
+    yield return new WaitForSeconds(waitTime);
+    action();
   }
 }
