@@ -17,7 +17,10 @@ public class SongManager : MonoBehaviour
 
   void OnValueChanged(object sender, UserInputEventArgs e)
   {
-    Debug.Log(addSong.GetData(0));
+    for (int i = 0; i < addSong.GetDataLangth(); i++)
+    {
+      songList.Add(addSong.GetData(i));
+    }
   }
 
   public static Song getNowPlaySong()

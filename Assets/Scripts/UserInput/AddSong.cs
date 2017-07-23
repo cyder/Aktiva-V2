@@ -45,5 +45,10 @@ namespace UserInputs
     {
       return data[index];
     }
+
+    public int GetDataLangth()
+    {
+      return data.Count;
+    }
   }
 }
