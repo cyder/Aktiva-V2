@@ -10,6 +10,7 @@ public class Popup : MonoBehaviour
   public GameObject addSongPopup;
   GameObject popup;
   AddSong addSong;
+  Coroutine coroutine;
 
   void Start ()
   {
@@ -21,6 +22,12 @@ public class Popup : MonoBehaviour
   void OnAddSongValueChanged(object sender, UserInputEventArgs e)
   {
     Clear();
+
+    if (coroutine != null)
+    {
+      StopCoroutine(coroutine);
+    }
+
     popup = Instantiate(
               addSongPopup,
               transform.position,
@@ -34,7 +41,7 @@ public class Popup : MonoBehaviour
     songTitle.text = song.title;
     Text artistName = popup.transform.Find("ArtistName").gameObject.GetComponent<Text>();
     artistName.text = song.artist;
-    StartCoroutine(DelayMethod(3.0f, () =>
+    coroutine = StartCoroutine(DelayMethod(3.0f, () =>
     {
       Clear();
     }));
