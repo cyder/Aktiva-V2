@@ -1,19 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UserInputs;
 
 public class PausePanel : MonoBehaviour
 {
+  UserInput pause, playback;
 
-  // Use this for initialization
   void Start ()
   {
-
+    pause = UserInputManager.GetUserInput(UserInputCode.Pause);
+    pause.OnValueChanged += OnPauseValueChanged;
+    playback = UserInputManager.GetUserInput(UserInputCode.Playback);
+    playback.OnValueChanged += OnPlaybackValueChanged;
+    gameObject.SetActive(false);
   }
 
-  // Update is called once per frame
-  void Update ()
+  void OnPauseValueChanged(object sender, UserInputEventArgs e)
   {
+    if (!gameObject.activeInHierarchy)
+    {
+      gameObject.SetActive(true);
+    }
+  }
 
+  void OnPlaybackValueChanged(object sender, UserInputEventArgs e)
+  {
+    if (gameObject.activeInHierarchy)
+    {
+      gameObject.SetActive(false);
+    }
   }
 }
