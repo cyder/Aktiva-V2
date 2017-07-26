@@ -10,7 +10,6 @@ public class Popup : MonoBehaviour
   public GameObject addSongPopup;
   GameObject popup;
   AddSong addSong;
-  Coroutine coroutine;
 
   void Start ()
   {
@@ -21,12 +20,7 @@ public class Popup : MonoBehaviour
   // 曲追加時のポップアップ
   void OnAddSongValueChanged(object sender, UserInputEventArgs e)
   {
-    Clear();
-
-    if (coroutine != null)
-    {
-      StopCoroutine(coroutine);
-    }
+    DestroyObject(popup);
 
     popup = Instantiate(
               addSongPopup,
@@ -37,29 +31,27 @@ public class Popup : MonoBehaviour
 
     Song song = addSong.GetData(0);
 
-    Text songTitle = popup.transform.Find("SongTitle").gameObject.GetComponent<Text>();
+    var songTitle = popup.transform.Find("SongTitle").gameObject.GetComponent<Text>();
     songTitle.text = song.title;
-    Text artistName = popup.transform.Find("ArtistName").gameObject.GetComponent<Text>();
+    var artistName = popup.transform.Find("ArtistName").gameObject.GetComponent<Text>();
     artistName.text = song.artist;
-    coroutine = StartCoroutine(DelayMethod(3.0f, () =>
-    {
-      Clear();
-    }));
+
+    StartCoroutine(DestroyObjectDelay(3.0f, popup));
   }
 
   // 出ているポップアップの削除
-  void Clear()
+  void DestroyObject(GameObject target)
   {
-    if (popup != null)
+    if (target != null)
     {
-      Destroy(popup);
+      Destroy(target);
     }
   }
 
   // メソッドを指定時間遅らせて実行
-  IEnumerator DelayMethod(float waitTime, Action action)
+  IEnumerator DestroyObjectDelay(float waitTime, GameObject target)
   {
     yield return new WaitForSeconds(waitTime);
-    action();
+    DestroyObject(target);
   }
 }
