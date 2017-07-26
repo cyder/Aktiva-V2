@@ -1,15 +1,26 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using SongUtility;
+using UserInputs;
 
 public class SongManager : MonoBehaviour
 {
   static Song nowPlaySong; // 現在再生中の曲
   static List<Song> songList = new List<Song>(); // 再生待ちの曲
+  AddSong addSong;
 
-  void Update()
+  void Start()
   {
-    // ここでsongListへの格納等を行う。
+    addSong = (AddSong)UserInputManager.GetUserInput(UserInputCode.AddSong);
+    addSong.OnValueChanged += OnValueChanged;
+  }
+
+  void OnValueChanged(object sender, UserInputEventArgs e)
+  {
+    for (int i = 0; i < addSong.GetDataLangth(); i++)
+    {
+      songList.Add(addSong.GetData(i));
+    }
   }
 
   public static Song getNowPlaySong()
