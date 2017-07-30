@@ -4,23 +4,29 @@ using UnityEngine.Video;
 
 public class DanceVideoPlayer : MonoBehaviour
 {
-  VideoPlayer videoPlayer;
+  static VideoPlayer videoPlayer;
+  static GameObject videoScreen;
 
   void Start ()
   {
+    videoScreen = GameObject.Find("VideoScreen");
+    videoScreen.SetActive(false);
     videoPlayer = GetComponent<VideoPlayer>();
     videoPlayer.url = "https://www.quirksmode.org/html5/videos/big_buck_bunny.mp4";
     videoPlayer.Prepare();
-    StartCoroutine(StartPlay());
   }
 
-  IEnumerator StartPlay()
+  static void StartPlay()
   {
-    while (!videoPlayer.isPrepared)
-    {
-      yield return 0;
-    }
-
+    videoScreen.SetActive(true);
     videoPlayer.Play();
+  }
+
+  static bool isPrepared
+  {
+    get
+    {
+      return videoPlayer.isPrepared;
+    }
   }
 }

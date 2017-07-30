@@ -26,7 +26,19 @@ public class RootSceneManager : MonoBehaviour
     if (currentScene != lastScene)
     {
       SceneManager.UnloadScene(lastScene.ToString());
-      SceneManager.LoadScene(currentScene.ToString(), LoadSceneMode.Additive);
+
+      switch (currentScene)
+      {
+        case SceneName.StandbyScene:
+          SceneManager.LoadScene("StandbyScene", LoadSceneMode.Additive);
+          break;
+
+        case SceneName.SongListScene:
+          SceneManager.LoadScene("SongListScene", LoadSceneMode.Additive);
+          SceneManager.LoadScene("PlayScene", LoadSceneMode.Additive);
+          break;
+      }
+
       lastScene = currentScene;
     }
   }
