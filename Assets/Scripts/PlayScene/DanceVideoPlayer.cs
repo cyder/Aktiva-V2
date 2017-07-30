@@ -16,13 +16,13 @@ public class DanceVideoPlayer : MonoBehaviour
     videoPlayer.Prepare();
   }
 
-  static void StartPlay()
+  public static void StartPlay()
   {
     videoScreen.SetActive(true);
     videoPlayer.Play();
   }
 
-  static bool isPrepared
+  public static bool isPrepared
   {
     get
     {
