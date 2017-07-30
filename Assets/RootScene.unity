@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff7d365e49d8640a4b68c6dee278e02a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addSongPopup: {fileID: 1669177927192542, guid: 9cd0049b487434487bb775b77d515604,
+  addSongPopup: {fileID: 1340549918449132, guid: 9cd0049b487434487bb775b77d515604,
     type: 2}
 --- !u!1 &631761983
 GameObject:
