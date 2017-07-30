@@ -22,12 +22,10 @@ public class Popup : MonoBehaviour
   {
     DestroyObject(popup);
 
-    popup = Instantiate(
-              addSongPopup,
-              transform.position,
-              Quaternion.identity
-            );
-    popup.transform.SetParent(transform);
+    Debug.Log(addSongPopup.gameObject.transform.position);
+
+    popup = Instantiate(addSongPopup);
+    popup.transform.SetParent(transform, false);
 
     Song song = addSong.GetData(0);
 
