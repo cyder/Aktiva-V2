@@ -6,6 +6,7 @@ public class DanceVideoPlayer : MonoBehaviour
 {
   static VideoPlayer videoPlayer;
   static GameObject videoScreen;
+  static bool _isEnded = false;
 
   void Start ()
   {
@@ -14,12 +15,19 @@ public class DanceVideoPlayer : MonoBehaviour
     videoPlayer = GetComponent<VideoPlayer>();
     videoPlayer.url = "https://www.quirksmode.org/html5/videos/big_buck_bunny.mp4";
     videoPlayer.Prepare();
+    videoPlayer.loopPointReached += MovieEndEvent;
+  }
+
+  void MovieEndEvent(VideoPlayer vp)
+  {
+    isEnded = true;
   }
 
   public static void StartPlay()
   {
     videoScreen.SetActive(true);
     videoPlayer.Play();
+    isEnded = false;
   }
 
   public static bool isPrepared
@@ -27,6 +35,19 @@ public class DanceVideoPlayer : MonoBehaviour
     get
     {
       return videoPlayer.isPrepared;
+    }
+  }
+
+  public static bool isEnded
+  {
+    get
+    {
+      return _isEnded;
+    }
+
+    private set
+    {
+      _isEnded = value;
     }
   }
 }

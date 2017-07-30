@@ -17,6 +17,11 @@ public class RootSceneManager : MonoBehaviour
 
   void Update()
   {
+    if (currentScene == SceneName.PlayScene && DanceVideoPlayer.isEnded)
+    {
+      currentScene = SceneName.StandbyScene;
+    }
+
     if (currentScene == SceneName.StandbyScene && SongManager.numStandBySong() > 0)
     {
       currentScene = SceneName.SongListScene;

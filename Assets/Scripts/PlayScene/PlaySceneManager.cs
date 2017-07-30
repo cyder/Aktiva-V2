@@ -8,4 +8,10 @@ public class PlaySceneManager : MonoBehaviour
     SceneManager.LoadScene("DanceMovie", LoadSceneMode.Additive);
     SceneManager.LoadScene("SongInfomation", LoadSceneMode.Additive);
   }
+
+  void OnDestroy ()
+  {
+    SceneManager.UnloadScene("DanceMovie");
+    SceneManager.UnloadScene("SongInfomation");
+  }
 }
