@@ -37,4 +37,10 @@ public class SongManager : MonoBehaviour
   {
     return songList.Count;
   }
+
+  public static void setNextSong()
+  {
+    nowPlaySong = songList[0];
+    songList.RemoveAt(0);
+  }
 }

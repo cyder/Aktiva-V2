@@ -20,6 +20,7 @@ public class RootSceneManager : MonoBehaviour
     if (currentScene == SceneName.StandbyScene && SongManager.numStandBySong() > 0)
     {
       currentScene = SceneName.SongListScene;
+      SongManager.setNextSong();
     }
   }
 
