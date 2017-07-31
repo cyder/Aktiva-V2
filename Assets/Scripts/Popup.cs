@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections;
 ﻿﻿using UnityEngine;
 using UnityEngine.UI;
@@ -21,8 +21,6 @@ public class Popup : MonoBehaviour
   void OnAddSongValueChanged(object sender, UserInputEventArgs e)
   {
     DestroyObject(popup);
-
-    Debug.Log(addSongPopup.gameObject.transform.position);
 
     popup = Instantiate(addSongPopup);
     popup.transform.SetParent(transform, false);
