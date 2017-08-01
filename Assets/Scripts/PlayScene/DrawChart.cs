@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class DrawChart : Graphic
 {
   const int VerticesCount = 5;
+  float[] scoreArray = { 0.5f, 0.5f, 0.5f, 0.5f, 0.5f }; // 仮点数
 
   protected override void OnPopulateMesh(VertexHelper vh)
   {
@@ -22,8 +23,8 @@ public class DrawChart : Graphic
     for (int i = 0; i < VerticesCount; i++)
     {
       float rad = (90f - (360f / (float)VerticesCount) * i) * Mathf.Deg2Rad;
-      float x = centerX + Mathf.Cos(rad) * length;
-      float y = centerY + Mathf.Sin(rad) * length;
+      float x = centerX + Mathf.Cos(rad) * length * scoreArray[i];
+      float y = centerY + Mathf.Sin(rad) * length * scoreArray[i];
       v.position = new Vector3(x, y);
       vh.AddVert(v);
       vh.AddTriangle(
