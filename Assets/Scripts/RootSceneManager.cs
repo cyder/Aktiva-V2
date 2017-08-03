@@ -1,4 +1,4 @@
-﻿﻿using System.Collections;
+﻿﻿﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -59,7 +59,7 @@ public class RootSceneManager : MonoBehaviour
 
     while (!DanceVideoPlayer.isPrepared)
     {
-      yield return 0;
+      yield return null;
     }
 
     currentScene = SceneType.PlayScene;
