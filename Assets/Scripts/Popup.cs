@@ -23,7 +23,7 @@ public class Popup : MonoBehaviour
     DestroyObject(popup);
 
     popup = Instantiate(addSongPopup);
-    popup.transform.SetParent(transform, false);
+    popup.transform.SetParent(this.transform, false);
 
     Song song = addSong.GetData(0);
 
