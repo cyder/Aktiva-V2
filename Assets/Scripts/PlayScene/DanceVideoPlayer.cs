@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Video;
 using UserInputs;
@@ -10,7 +10,7 @@ public class DanceVideoPlayer : MonoBehaviour
   static bool _isEnded = false;
   UserInput pause, playback;
 
-    public static void StartPlay()
+  public static void StartPlay()
   {
     videoScreen.SetActive(true);
     videoPlayer.Play();
@@ -72,5 +72,5 @@ public class DanceVideoPlayer : MonoBehaviour
   void MovieEndEvent(VideoPlayer vp)
   {
     isEnded = true;
-  }}
-
+  }
+}
