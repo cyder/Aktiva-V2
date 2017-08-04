@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 102230445}
   - component: {fileID: 102230444}
   m_Layer: 5
-  m_Name: 12345
+  m_Name: SongListFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 144504656}
   - component: {fileID: 144504655}
   m_Layer: 5
-  m_Name: next-song
+  m_Name: NextSongWord
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 235468422}
   - component: {fileID: 235468421}
   m_Layer: 5
-  m_Name: circle4
+  m_Name: Circle4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 253185948}
   - component: {fileID: 253185947}
   m_Layer: 5
-  m_Name: next
+  m_Name: NextSongFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 332510572}
   - component: {fileID: 332510571}
   m_Layer: 5
-  m_Name: length-line
+  m_Name: LengthLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -476,7 +476,7 @@ GameObject:
   - component: {fileID: 403395433}
   - component: {fileID: 403395432}
   m_Layer: 5
-  m_Name: circle5
+  m_Name: Circle5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -616,7 +616,7 @@ GameObject:
   - component: {fileID: 472130542}
   - component: {fileID: 472130541}
   m_Layer: 5
-  m_Name: line1
+  m_Name: Underline1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -684,7 +684,7 @@ GameObject:
   - component: {fileID: 620050538}
   - component: {fileID: 620050537}
   m_Layer: 5
-  m_Name: line2
+  m_Name: Underline2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -752,7 +752,7 @@ GameObject:
   - component: {fileID: 624070233}
   - component: {fileID: 624070232}
   m_Layer: 5
-  m_Name: number-3
+  m_Name: Number3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -773,7 +773,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1.5000039}
+  m_AnchoredPosition: {x: 0, y: -1.5000038}
   m_SizeDelta: {x: 20.5, y: 37.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &624070232
@@ -1009,7 +1009,7 @@ GameObject:
   - component: {fileID: 876136105}
   - component: {fileID: 876136104}
   m_Layer: 5
-  m_Name: circle2
+  m_Name: Circle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1079,7 +1079,7 @@ GameObject:
   - component: {fileID: 930602977}
   - component: {fileID: 930602976}
   m_Layer: 5
-  m_Name: line3
+  m_Name: Underline3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1147,7 +1147,7 @@ GameObject:
   - component: {fileID: 951212406}
   - component: {fileID: 951212405}
   m_Layer: 5
-  m_Name: number-5
+  m_Name: Number5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1221,7 +1221,7 @@ GameObject:
   - component: {fileID: 953508635}
   - component: {fileID: 953508634}
   m_Layer: 5
-  m_Name: list
+  m_Name: SongLIst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1295,7 +1295,7 @@ GameObject:
   - component: {fileID: 971868217}
   - component: {fileID: 971868216}
   m_Layer: 5
-  m_Name: wide
+  m_Name: NextSong
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1364,7 +1364,7 @@ GameObject:
   - component: {fileID: 1151118201}
   - component: {fileID: 1151118200}
   m_Layer: 5
-  m_Name: number-2
+  m_Name: Number2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1438,7 +1438,7 @@ GameObject:
   - component: {fileID: 1326645106}
   - component: {fileID: 1326645105}
   m_Layer: 5
-  m_Name: song01
+  m_Name: Song01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1512,7 +1512,7 @@ GameObject:
   - component: {fileID: 1340833287}
   - component: {fileID: 1340833286}
   m_Layer: 5
-  m_Name: artist01
+  m_Name: Artist01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1586,7 +1586,7 @@ GameObject:
   - component: {fileID: 1640058515}
   - component: {fileID: 1640058514}
   m_Layer: 5
-  m_Name: circle3
+  m_Name: Circle3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1656,7 +1656,7 @@ GameObject:
   - component: {fileID: 1766980762}
   - component: {fileID: 1766980761}
   m_Layer: 5
-  m_Name: number-4
+  m_Name: Number4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1730,7 +1730,7 @@ GameObject:
   - component: {fileID: 1850674010}
   - component: {fileID: 1850674009}
   m_Layer: 5
-  m_Name: number-1
+  m_Name: Number1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1866,7 +1866,7 @@ GameObject:
   - component: {fileID: 1995055911}
   - component: {fileID: 1995055910}
   m_Layer: 5
-  m_Name: circle1
+  m_Name: Circle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1936,7 +1936,7 @@ GameObject:
   - component: {fileID: 2087508152}
   - component: {fileID: 2087508151}
   m_Layer: 5
-  m_Name: line4
+  m_Name: Underline4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
