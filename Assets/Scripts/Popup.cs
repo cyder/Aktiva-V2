@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections;
 ﻿﻿using UnityEngine;
 using UnityEngine.UI;
@@ -22,12 +22,8 @@ public class Popup : MonoBehaviour
   {
     DestroyObject(popup);
 
-    popup = Instantiate(
-              addSongPopup,
-              transform.position,
-              Quaternion.identity
-            );
-    popup.transform.SetParent(transform);
+    popup = Instantiate(addSongPopup);
+    popup.transform.SetParent(this.transform, false);
 
     Song song = addSong.GetData(0);
 
