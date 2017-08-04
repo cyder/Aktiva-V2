@@ -350,6 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56df8a92414dc4334afba839cb5f0b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  videoScreen: {fileID: 0}
 --- !u!1 &1889661244
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,7 +363,7 @@ GameObject:
   - component: {fileID: 1889661246}
   - component: {fileID: 1889661245}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: VideoScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

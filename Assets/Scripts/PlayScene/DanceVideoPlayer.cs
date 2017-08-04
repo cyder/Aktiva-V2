@@ -1,19 +1,51 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Video;
 using UserInputs;
 
 public class DanceVideoPlayer : MonoBehaviour
 {
-  VideoPlayer videoPlayer;
+  static VideoPlayer videoPlayer;
+  static GameObject videoScreen;
+  static bool _isEnded = false;
   UserInput pause, playback;
+
+  public static void StartPlay()
+  {
+    videoScreen.SetActive(true);
+    videoPlayer.Play();
+    isEnded = false;
+  }
+
+  public static bool isPrepared
+  {
+    get
+    {
+      return videoPlayer.isPrepared;
+    }
+  }
+
+  public static bool isEnded
+  {
+    get
+    {
+      return _isEnded;
+    }
+
+    private set
+    {
+      _isEnded = value;
+    }
+  }
 
   void Start ()
   {
+    videoScreen = GameObject.Find("VideoScreen");
+    videoScreen.SetActive(false);
     videoPlayer = GetComponent<VideoPlayer>();
     videoPlayer.url = "https://www.quirksmode.org/html5/videos/big_buck_bunny.mp4";
     videoPlayer.Prepare();
-    StartCoroutine(StartPlay());
+    videoPlayer.loopPointReached += MovieEndEvent;
 
     pause = UserInputManager.GetUserInput(UserInputCode.Pause);
     pause.OnValueChanged += OnPauseValueChanged;
@@ -37,13 +69,8 @@ public class DanceVideoPlayer : MonoBehaviour
     }
   }
 
-  IEnumerator StartPlay()
+  void MovieEndEvent(VideoPlayer vp)
   {
-    while (!videoPlayer.isPrepared)
-    {
-      yield return 0;
-    }
-
-    videoPlayer.Play();
+    isEnded = true;
   }
 }
