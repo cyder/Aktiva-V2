@@ -56,5 +56,10 @@ namespace SongUtility
         lyrics.Add(new Lyric(text, time));
       }
     }
+
+    public Lyric GetLyric(int index)
+    {
+      return lyrics[index];
+    }
   }
 }
