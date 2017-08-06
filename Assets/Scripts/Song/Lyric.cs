@@ -5,7 +5,7 @@ namespace SongUtility
   public class Lyric
   {
     string _text; // 歌詞
-    DateTime _time; // 動画開始時刻からの時間
+    double _time; // 動画開始時刻からの時間
 
     // timeは"%M:%S:%L"のテキストで指定する
     public Lyric(string text, string stringTime)
@@ -18,13 +18,13 @@ namespace SongUtility
         return;
       }
 
-      int[] timeElements = new int[stringTimeElements.Length];
+      double[] timeElements = new double[stringTimeElements.Length];
 
       try
       {
         for (int i = 0; i < stringTimeElements.Length; i++)
         {
-          timeElements[i] = Int32.Parse(stringTimeElements[i]);
+          timeElements[i] = Double.Parse(stringTimeElements[i]);
         }
       }
       catch (FormatException e)
@@ -32,10 +32,7 @@ namespace SongUtility
         return;
       }
 
-      this.time = new DateTime(2000, 1, 1, 0,
-                               timeElements[0],  // 分
-                               timeElements[1],  // 秒
-                               timeElements[2]); // ミリ秒
+      this.time = timeElements[0] * 60.0 + timeElements[1] + timeElements[2] * 0.001;
     }
 
     public string text
@@ -51,7 +48,7 @@ namespace SongUtility
       }
     }
 
-    public DateTime time
+    public double time
     {
       get
       {
