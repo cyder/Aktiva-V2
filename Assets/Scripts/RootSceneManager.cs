@@ -63,6 +63,6 @@ public class RootSceneManager : MonoBehaviour
     }
 
     currentScene = SceneType.PlayScene;
-    DanceVideoPlayer.StartPlay(); // 動画の再生開始
+    PlaySceneManager.Play();
   }
 }
