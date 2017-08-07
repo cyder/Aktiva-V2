@@ -9,17 +9,18 @@ public class RootSceneManager : MonoBehaviour
   SceneType currentScene, lastScene; // 現在のScene, 1フレーム前のScene
   const float SongListSceneTime = 5.0f;
   SongManager songManage;
+  DanceVideoPlayer danceVideoPlayer;
 
   void Start()
   {
-    SceneManager.LoadScene(startScene.ToString(), LoadSceneMode.Additive);
+    StartCoroutine(LoadStandbyScene());
     currentScene = lastScene = startScene;
     songManage = GameObject.Find("SongManager").GetComponent<SongManager>();
   }
 
   void Update()
   {
-    if (currentScene == SceneType.PlayScene && DanceVideoPlayer.isEnded)
+    if (currentScene == SceneType.PlayScene && danceVideoPlayer.isEnded)
     {
       currentScene = SceneType.StandbyScene;
     }
@@ -35,18 +36,17 @@ public class RootSceneManager : MonoBehaviour
   {
     if (currentScene != lastScene)
     {
-      SceneManager.UnloadScene(lastScene.ToString());
+      SceneManager.UnloadSceneAsync(lastScene.ToString());
 
       switch (currentScene)
       {
         case SceneType.StandbyScene:
-          SceneManager.LoadScene("StandbyScene", LoadSceneMode.Additive);
+          StartCoroutine(LoadStandbyScene());
           break;
 
         case SceneType.SongListScene:
-          SceneManager.LoadScene("SongListScene", LoadSceneMode.Additive);
-          SceneManager.LoadScene("PlayScene", LoadSceneMode.Additive);
-          StartCoroutine(ChangePlaySceneDelay(SongListSceneTime));
+          StartCoroutine(LoadSongListScene());
+          StartCoroutine(LoadPlayScene());
           break;
       }
 
@@ -54,17 +54,38 @@ public class RootSceneManager : MonoBehaviour
     }
   }
 
+  // StandbySceneをロード
+  IEnumerator LoadStandbyScene()
+  {
+    yield return SceneManager.LoadSceneAsync("StandbyScene", LoadSceneMode.Additive);
+  }
+
+  // SongListSceneをロード
+  IEnumerator LoadSongListScene()
+  {
+    yield return SceneManager.LoadSceneAsync("SongListScene", LoadSceneMode.Additive);
+  }
+
+  // PlaySceneをロード
+  IEnumerator LoadPlayScene()
+  {
+    yield return SceneManager.LoadSceneAsync("PlayScene", LoadSceneMode.Additive);
+    StartCoroutine(ChangePlaySceneDelay(SongListSceneTime));
+  }
+
   // 指定時間遅らせてPlaySceneを開始
   IEnumerator ChangePlaySceneDelay(float waitTime)
   {
     yield return new WaitForSeconds(waitTime);
 
-    while (!DanceVideoPlayer.isPrepared)
+    danceVideoPlayer = GameObject.Find("DanceVideoPlayer").GetComponent<DanceVideoPlayer>();
+
+    while (!danceVideoPlayer.isPrepared)
     {
       yield return null;
     }
 
     currentScene = SceneType.PlayScene;
-    DanceVideoPlayer.StartPlay(); // 動画の再生開始
+    danceVideoPlayer.StartPlay(); // 動画の再生開始
   }
 }

@@ -5,19 +5,19 @@ using UserInputs;
 
 public class DanceVideoPlayer : MonoBehaviour
 {
-  static VideoPlayer videoPlayer;
-  static GameObject videoScreen;
-  static bool _isEnded = false;
+  VideoPlayer videoPlayer;
+  GameObject videoScreen;
+  bool _isEnded = false;
   UserInput pause, playback;
 
-  public static void StartPlay()
+  public void StartPlay()
   {
     videoScreen.SetActive(true);
     videoPlayer.Play();
     isEnded = false;
   }
 
-  public static bool isPrepared
+  public bool isPrepared
   {
     get
     {
@@ -25,7 +25,7 @@ public class DanceVideoPlayer : MonoBehaviour
     }
   }
 
-  public static bool isEnded
+  public bool isEnded
   {
     get
     {
