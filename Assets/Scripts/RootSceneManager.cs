@@ -8,11 +8,13 @@ public class RootSceneManager : MonoBehaviour
   const SceneType startScene = SceneType.StandbyScene; // 初期Scene
   SceneType currentScene, lastScene; // 現在のScene, 1フレーム前のScene
   const float SongListSceneTime = 5.0f;
+  SongManager songManage;
 
   void Start()
   {
     SceneManager.LoadScene(startScene.ToString(), LoadSceneMode.Additive);
     currentScene = lastScene = startScene;
+    songManage = GameObject.Find("SongManager").GetComponent<SongManager>();
   }
 
   void Update()
@@ -22,10 +24,10 @@ public class RootSceneManager : MonoBehaviour
       currentScene = SceneType.StandbyScene;
     }
 
-    if (currentScene == SceneType.StandbyScene && SongManager.numStandBySong() > 0)
+    if (currentScene == SceneType.StandbyScene && songManage.numStandBySong() > 0)
     {
       currentScene = SceneType.SongListScene;
-      SongManager.setNextSong();
+      songManage.setNextSong();
     }
   }
 
