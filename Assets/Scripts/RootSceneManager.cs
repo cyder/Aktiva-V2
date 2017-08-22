@@ -20,7 +20,7 @@ public class RootSceneManager : MonoBehaviour
 
   void Update()
   {
-    if (currentScene == SceneType.PlayScene && danceVideoPlayer.isEnded)
+    if (currentScene == SceneType.PlayScene && danceVideoPlayer.IsEnded)
     {
       currentScene = SceneType.StandbyScene;
     }

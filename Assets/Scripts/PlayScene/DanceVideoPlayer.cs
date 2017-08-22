@@ -7,14 +7,14 @@ public class DanceVideoPlayer : MonoBehaviour
 {
   VideoPlayer videoPlayer;
   GameObject videoScreen;
-  bool _isEnded = false;
+  bool isEnded = false;
   UserInput pause, playback;
 
   public void StartPlay()
   {
     videoScreen.SetActive(true);
     videoPlayer.Play();
-    isEnded = false;
+    IsEnded = false;
   }
 
   public bool isPrepared
@@ -25,16 +25,16 @@ public class DanceVideoPlayer : MonoBehaviour
     }
   }
 
-  public bool isEnded
+  public bool IsEnded
   {
     get
     {
-      return _isEnded;
+      return isEnded;
     }
 
     private set
     {
-      _isEnded = value;
+      isEnded = value;
     }
   }
 
