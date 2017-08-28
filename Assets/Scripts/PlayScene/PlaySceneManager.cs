@@ -3,10 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class PlaySceneManager : MonoBehaviour
 {
-  static public void Play()
+  DanceVideoPlayer danceVideoPlayer;
+
+  public void Play()
   {
     SceneManager.LoadScene("SongInfomation", LoadSceneMode.Additive);
-    DanceVideoPlayer.StartPlay(); // 動画の再生開始
+    danceVideoPlayer = GameObject.Find("DanceVideoPlayedr").GetComponent<DanceVideoPlayer>();
+    danceVideoPlayer.StartPlay(); // 動画の再生開始
   }
 
   void Start ()

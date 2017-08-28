@@ -26,7 +26,7 @@ public class DanceVideoPlayer : MonoBehaviour
   }
 
 
-  public static double time
+  public double Time
   {
     get
     {
