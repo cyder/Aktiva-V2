@@ -8,24 +8,27 @@ public class RootSceneManager : MonoBehaviour
   const SceneType startScene = SceneType.StandbyScene; // 初期Scene
   SceneType currentScene, lastScene; // 現在のScene, 1フレーム前のScene
   const float SongListSceneTime = 5.0f;
+  SongManager songManage;
+  DanceVideoPlayer danceVideoPlayer;
 
   void Start()
   {
-    SceneManager.LoadScene(startScene.ToString(), LoadSceneMode.Additive);
+    SceneManager.LoadSceneAsync(startScene.ToString(), LoadSceneMode.Additive);
     currentScene = lastScene = startScene;
+    songManage = GameObject.Find("SongManager").GetComponent<SongManager>();
   }
 
   void Update()
   {
-    if (currentScene == SceneType.PlayScene && DanceVideoPlayer.isEnded)
+    if (currentScene == SceneType.PlayScene && danceVideoPlayer.IsEnded)
     {
       currentScene = SceneType.StandbyScene;
     }
 
-    if (currentScene == SceneType.StandbyScene && SongManager.numStandBySong() > 0)
+    if (currentScene == SceneType.StandbyScene && songManage.numStandBySong() > 0)
     {
       currentScene = SceneType.SongListScene;
-      SongManager.setNextSong();
+      songManage.setNextSong();
     }
   }
 
@@ -33,18 +36,17 @@ public class RootSceneManager : MonoBehaviour
   {
     if (currentScene != lastScene)
     {
-      SceneManager.UnloadScene(lastScene.ToString());
+      SceneManager.UnloadSceneAsync(lastScene.ToString());
 
       switch (currentScene)
       {
         case SceneType.StandbyScene:
-          SceneManager.LoadScene("StandbyScene", LoadSceneMode.Additive);
+          SceneManager.LoadSceneAsync("StandbyScene", LoadSceneMode.Additive);
           break;
 
         case SceneType.SongListScene:
-          SceneManager.LoadScene("SongListScene", LoadSceneMode.Additive);
-          SceneManager.LoadScene("PlayScene", LoadSceneMode.Additive);
-          StartCoroutine(ChangePlaySceneDelay(SongListSceneTime));
+          SceneManager.LoadSceneAsync("SongListScene", LoadSceneMode.Additive);
+          StartCoroutine(LoadPlayScene());
           break;
       }
 
@@ -52,17 +54,22 @@ public class RootSceneManager : MonoBehaviour
     }
   }
 
-  // 指定時間遅らせてPlaySceneを開始
-  IEnumerator ChangePlaySceneDelay(float waitTime)
+  // PlaySceneをロード
+  IEnumerator LoadPlayScene()
   {
-    yield return new WaitForSeconds(waitTime);
+    yield return SceneManager.LoadSceneAsync("PlayScene", LoadSceneMode.Additive);
 
-    while (!DanceVideoPlayer.isPrepared)
+    // 指定時間遅らせてPlaySceneを開始
+    yield return new WaitForSeconds(SongListSceneTime);
+
+    danceVideoPlayer = GameObject.Find("DanceVideoPlayer").GetComponent<DanceVideoPlayer>();
+
+    while (!danceVideoPlayer.isPrepared)
     {
       yield return null;
     }
 
     currentScene = SceneType.PlayScene;
-    PlaySceneManager.Play();
+    danceVideoPlayer.StartPlay(); // 動画の再生開始
   }
 }

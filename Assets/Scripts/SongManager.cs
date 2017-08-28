@@ -5,8 +5,8 @@ using UserInputs;
 
 public class SongManager : MonoBehaviour
 {
-  static Song nowPlaySong; // 現在再生中の曲
-  static List<Song> songList = new List<Song>(); // 再生待ちの曲
+  Song nowPlaySong; // 現在再生中の曲
+  List<Song> songList = new List<Song>(); // 再生待ちの曲
   AddSong addSong;
 
   void Start()
@@ -23,22 +23,22 @@ public class SongManager : MonoBehaviour
     }
   }
 
-  public static Song getNowPlaySong()
+  public Song getNowPlaySong()
   {
     return nowPlaySong;
   }
 
-  public static Song getStandbySong(int index)
+  public Song getStandbySong(int index)
   {
     return songList[index];
   }
 
-  public static int numStandBySong()
+  public int numStandBySong()
   {
     return songList.Count;
   }
 
-  public static void setNextSong()
+  public void setNextSong()
   {
     nowPlaySong = songList[0];
     songList.RemoveAt(0);
