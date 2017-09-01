@@ -9,6 +9,7 @@ public class DanceVideoPlayer : MonoBehaviour
   GameObject videoScreen;
   bool isEnded = false;
   UserInput pause, playback;
+  ChangePlaySpeed changePlaySpeed;
 
   public void StartPlay()
   {
@@ -60,6 +61,8 @@ public class DanceVideoPlayer : MonoBehaviour
     pause.OnValueChanged += OnPauseValueChanged;
     playback = UserInputManager.GetUserInput(UserInputCode.Playback);
     playback.OnValueChanged += OnPlaybackValueChanged;
+    changePlaySpeed = (ChangePlaySpeed)UserInputManager.GetUserInput(UserInputCode.ChangePlaySpeed);
+    changePlaySpeed.OnValueChanged += OnPlaySpeedValueChanged;
   }
 
   void OnPauseValueChanged(object sender, UserInputEventArgs e)
@@ -76,6 +79,11 @@ public class DanceVideoPlayer : MonoBehaviour
     {
       videoPlayer.Play();
     }
+  }
+
+  void OnPlaySpeedValueChanged(object sender, UserInputEventArgs e)
+  {
+    videoPlayer.playbackSpeed = (float)changePlaySpeed.Data;
   }
 
   void MovieEndEvent(VideoPlayer vp)
