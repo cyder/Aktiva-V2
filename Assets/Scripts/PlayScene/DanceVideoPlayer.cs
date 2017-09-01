@@ -25,6 +25,15 @@ public class DanceVideoPlayer : MonoBehaviour
     }
   }
 
+
+  public double Time
+  {
+    get
+    {
+      return videoPlayer.time;
+    }
+  }
+
   public bool IsEnded
   {
     get

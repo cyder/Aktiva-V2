@@ -1,4 +1,7 @@
-﻿namespace SongUtility
+﻿using System;
+using System.Collections.Generic;
+
+namespace SongUtility
 {
   public class Song
   {
@@ -7,6 +10,7 @@
     string _artist; // アーティスト名
     DanceScore danceScore; // 採点
     Movie movie; // 動画
+    List<Lyric> lyrics = new List<Lyric>();
 
     public string title
     {
@@ -42,23 +46,20 @@
       songId = id;
 
       // 仮実装、本来ならサーバにデータを取りに行く
-      switch (id)
+      title = string.Format("曲名{0}", songId);
+      artist = string.Format("アーティスト{0}", songId);
+
+      for (int i = 0; i < 20; i++)
       {
-        case 1:
-          title = "曲名1";
-          artist = "アーティスト1";
-          break;
-
-        case 2:
-          title = "曲名2";
-          artist = "アーティスト2";
-          break;
-
-        case 3:
-          title = "曲名3";
-          artist = "アーティスト3";
-          break;
+        string text = string.Format("歌詞{0}", i);
+        string time = string.Format("0:{0}:0", i);
+        lyrics.Add(new Lyric(text, time));
       }
+    }
+
+    public Lyric GetLyric(int index)
+    {
+      return lyrics[index];
     }
   }
 }
