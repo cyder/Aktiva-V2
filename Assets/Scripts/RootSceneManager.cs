@@ -70,6 +70,8 @@ public class RootSceneManager : MonoBehaviour
     }
 
     currentScene = SceneType.PlayScene;
-    danceVideoPlayer.StartPlay(); // 動画の再生開始
+
+    PlaySceneManager playSceneManager = GameObject.Find("PlaySceneManager").GetComponent<PlaySceneManager>();
+    playSceneManager.Play(); // 動画の再生開始
   }
 }
