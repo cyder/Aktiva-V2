@@ -8,7 +8,7 @@ public class DanceVideoPlayer : MonoBehaviour
   VideoPlayer videoPlayer;
   GameObject videoScreen;
   bool isEnded = false;
-  UserInput pause, playback;
+  UserInput pause, playback, fastForward, rewind;
   ChangePlaySpeed changePlaySpeed;
   ChangeVolume changeVolume;
 
@@ -62,6 +62,10 @@ public class DanceVideoPlayer : MonoBehaviour
     pause.OnValueChanged += OnPauseValueChanged;
     playback = UserInputManager.GetUserInput(UserInputCode.Playback);
     playback.OnValueChanged += OnPlaybackValueChanged;
+    fastForward = UserInputManager.GetUserInput(UserInputCode.FastForward);
+    fastForward.OnValueChanged += OnFastForwardValueChanged;
+    rewind = UserInputManager.GetUserInput(UserInputCode.Rewind);
+    rewind.OnValueChanged += OnRewindValueChanged;
     changePlaySpeed = (ChangePlaySpeed)UserInputManager.GetUserInput(UserInputCode.ChangePlaySpeed);
     changePlaySpeed.OnValueChanged += OnPlaySpeedValueChanged;
     changeVolume = (ChangeVolume)UserInputManager.GetUserInput(UserInputCode.ChangeVolume);
@@ -82,6 +86,16 @@ public class DanceVideoPlayer : MonoBehaviour
     {
       videoPlayer.Play();
     }
+  }
+
+  void OnFastForwardValueChanged(object sender, UserInputEventArgs e)
+  {
+    videoPlayer.time += 10.0;
+  }
+
+  void OnRewindValueChanged(object sender, UserInputEventArgs e)
+  {
+    videoPlayer.time -= 10.0;
   }
 
   void OnPlaySpeedValueChanged(object sender, UserInputEventArgs e)
