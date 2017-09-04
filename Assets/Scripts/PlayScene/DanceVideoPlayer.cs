@@ -10,6 +10,7 @@ public class DanceVideoPlayer : MonoBehaviour
   bool isEnded = false;
   UserInput pause, playback;
   ChangePlaySpeed changePlaySpeed;
+  ChangeVolume changeVolume;
 
   public void StartPlay()
   {
@@ -63,6 +64,8 @@ public class DanceVideoPlayer : MonoBehaviour
     playback.OnValueChanged += OnPlaybackValueChanged;
     changePlaySpeed = (ChangePlaySpeed)UserInputManager.GetUserInput(UserInputCode.ChangePlaySpeed);
     changePlaySpeed.OnValueChanged += OnPlaySpeedValueChanged;
+    changeVolume = (ChangeVolume)UserInputManager.GetUserInput(UserInputCode.ChangeVolume);
+    changeVolume.OnValueChanged += OnVolumeValueChanged;
   }
 
   void OnPauseValueChanged(object sender, UserInputEventArgs e)
@@ -84,6 +87,11 @@ public class DanceVideoPlayer : MonoBehaviour
   void OnPlaySpeedValueChanged(object sender, UserInputEventArgs e)
   {
     videoPlayer.playbackSpeed = (float)changePlaySpeed.Data;
+  }
+
+  void OnVolumeValueChanged(object sender, UserInputEventArgs e)
+  {
+    videoPlayer.SetDirectAudioVolume(0, (float)changeVolume.Data);
   }
 
   void MovieEndEvent(VideoPlayer vp)
