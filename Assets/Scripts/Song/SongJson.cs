@@ -10,6 +10,7 @@ public class SongJson
   public ComposerJson composer;
   public ChoreographerJson choreographer;
   public BadgeJson badge;
+  public string video;
 }
 
 [Serializable]

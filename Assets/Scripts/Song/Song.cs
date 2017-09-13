@@ -8,6 +8,7 @@ namespace SongUtility
     int songId; // 曲ID
     string _title; // 曲タイトル
     string _artist; // アーティスト名
+    string url; //動画URL
     bool isLoad = false;
     DanceScore danceScore; // 採点
     Movie movie; // 動画
@@ -53,6 +54,18 @@ namespace SongUtility
       }
     }
 
+    public string Url
+    {
+      get
+      {
+        return url;
+      }
+
+      private set
+      {
+        url = value;
+      }
+    }
     public Song(int id)
     {
       danceScore = new DanceScore();
@@ -75,6 +88,7 @@ namespace SongUtility
     {
       title = songJson.title;
       artist = songJson.artist.name;
+      Url = "http://133.242.226.13/" + songJson.video;
       IsLoad = true;
     }
 
