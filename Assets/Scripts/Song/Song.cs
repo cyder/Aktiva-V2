@@ -47,7 +47,7 @@ namespace SongUtility
 
       // 仮実装、本来ならサーバにデータを取りに行く
       WebRequestManager webRequestManager = GameObject.Find("WebRequestManager").GetComponent<WebRequestManager>();
-      webRequestManager.GetSongData(songId);
+      webRequestManager.GetSongData(songId, SetSongData);
       title = string.Format("曲名{0}", songId);
       artist = string.Format("アーティスト{0}", songId);
 
@@ -57,6 +57,12 @@ namespace SongUtility
         string time = string.Format("0:{0}:0", i);
         lyrics.Add(new Lyric(text, time));
       }
+    }
+
+    void SetSongData(SongJson songJson)
+    {
+      title = songJson.title;
+      artist = songJson.artist.name;
     }
 
     public Lyric GetLyric(int index)
