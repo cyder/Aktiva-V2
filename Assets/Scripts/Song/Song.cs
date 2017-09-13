@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace SongUtility
 {
@@ -46,6 +46,8 @@ namespace SongUtility
       songId = id;
 
       // 仮実装、本来ならサーバにデータを取りに行く
+      WebRequestManager webRequestManager = GameObject.Find("WebRequestManager").GetComponent<WebRequestManager>();
+      webRequestManager.GetSongData(songId);
       title = string.Format("曲名{0}", songId);
       artist = string.Format("アーティスト{0}", songId);
 
