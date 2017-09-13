@@ -27,7 +27,6 @@ public class WebRequestManager : MonoBehaviour
       {
         string text = request.downloadHandler.text;
         SongJson songJson = JsonUtility.FromJson<SongJson>(text);
-        Debug.Log(songJson.title);
         callback(songJson);
       }
     }
