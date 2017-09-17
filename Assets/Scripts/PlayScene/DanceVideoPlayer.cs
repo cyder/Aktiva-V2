@@ -126,4 +126,16 @@ public class DanceVideoPlayer : MonoBehaviour
   {
     isEnded = true;
   }
+
+  void OnDestroy()
+  {
+    pause.OnValueChanged -= OnPauseValueChanged;
+    playback.OnValueChanged -= OnPlaybackValueChanged;
+    fastForward.OnValueChanged -= OnFastForwardValueChanged;
+    rewind.OnValueChanged -= OnRewindValueChanged;
+    restart.OnValueChanged -= OnRestartValueChanged;
+    stop.OnValueChanged -= OnStopValueChanged;
+    changePlaySpeed.OnValueChanged -= OnPlaySpeedValueChanged;
+    changeVolume.OnValueChanged -= OnVolumeValueChanged;
+  }
 }
