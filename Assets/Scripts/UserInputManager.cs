@@ -9,7 +9,9 @@ public enum UserInputCode
   Playback,
   Restart,
   Rewind,
-  Stop
+  Stop,
+  ChangePlaySpeed,
+  ChangeVolume
 }
 
 public class UserInputManager : MonoBehaviour
@@ -22,7 +24,9 @@ public class UserInputManager : MonoBehaviour
     new Playback(),
     new Restart(),
     new Rewind(),
-    new Stop()
+    new Stop(),
+    new ChangePlaySpeed(),
+    new ChangeVolume(),
   };
 
   void Update()
