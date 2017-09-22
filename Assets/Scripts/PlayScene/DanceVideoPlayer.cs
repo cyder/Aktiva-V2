@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Video;
 using UserInputs;
+using SongUtility;
 
 public class DanceVideoPlayer : MonoBehaviour
 {
@@ -53,10 +54,7 @@ public class DanceVideoPlayer : MonoBehaviour
   {
     videoScreen = GameObject.Find("VideoScreen");
     videoScreen.SetActive(false);
-    videoPlayer = GetComponent<VideoPlayer>();
-    videoPlayer.url = "https://www.quirksmode.org/html5/videos/big_buck_bunny.mp4";
-    videoPlayer.Prepare();
-    videoPlayer.loopPointReached += MovieEndEvent;
+    StartCoroutine(VideoSetup());
 
     pause = UserInputManager.GetUserInput(UserInputCode.Pause);
     pause.OnValueChanged += OnPauseValueChanged;
@@ -125,6 +123,22 @@ public class DanceVideoPlayer : MonoBehaviour
   void MovieEndEvent(VideoPlayer vp)
   {
     isEnded = true;
+  }
+
+  IEnumerator VideoSetup ()
+  {
+    SongManager songManager = GameObject.Find("SongManager").GetComponent<SongManager>();
+    Song song = songManager.getNowPlaySong();
+
+    while (!song.IsLoad)
+    {
+      yield return null;
+    }
+
+    videoPlayer = GetComponent<VideoPlayer>();
+    videoPlayer.url = song.Url;
+    videoPlayer.Prepare();
+    videoPlayer.loopPointReached += MovieEndEvent;
   }
 
   void OnDestroy()
