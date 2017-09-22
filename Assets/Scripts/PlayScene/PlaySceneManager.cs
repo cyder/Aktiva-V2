@@ -8,7 +8,7 @@ public class PlaySceneManager : MonoBehaviour
   public void Play()
   {
     SceneManager.LoadScene("SongInfomation", LoadSceneMode.Additive);
-    danceVideoPlayer = GameObject.Find("DanceVideoPlayedr").GetComponent<DanceVideoPlayer>();
+    danceVideoPlayer = GameObject.Find("DanceVideoPlayer").GetComponent<DanceVideoPlayer>();
     danceVideoPlayer.StartPlay(); // 動画の再生開始
   }
 

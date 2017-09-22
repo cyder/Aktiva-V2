@@ -9,7 +9,9 @@ public class DanceVideoPlayer : MonoBehaviour
   VideoPlayer videoPlayer;
   GameObject videoScreen;
   bool isEnded = false;
-  UserInput pause, playback;
+  UserInput pause, playback, fastForward, rewind, restart, stop;
+  ChangePlaySpeed changePlaySpeed;
+  ChangeVolume changeVolume;
 
   public void StartPlay()
   {
@@ -58,6 +60,18 @@ public class DanceVideoPlayer : MonoBehaviour
     pause.OnValueChanged += OnPauseValueChanged;
     playback = UserInputManager.GetUserInput(UserInputCode.Playback);
     playback.OnValueChanged += OnPlaybackValueChanged;
+    fastForward = UserInputManager.GetUserInput(UserInputCode.FastForward);
+    fastForward.OnValueChanged += OnFastForwardValueChanged;
+    rewind = UserInputManager.GetUserInput(UserInputCode.Rewind);
+    rewind.OnValueChanged += OnRewindValueChanged;
+    restart = UserInputManager.GetUserInput(UserInputCode.Restart);
+    restart.OnValueChanged += OnRestartValueChanged;
+    stop = UserInputManager.GetUserInput(UserInputCode.Stop);
+    stop.OnValueChanged += OnStopValueChanged;
+    changePlaySpeed = (ChangePlaySpeed)UserInputManager.GetUserInput(UserInputCode.ChangePlaySpeed);
+    changePlaySpeed.OnValueChanged += OnPlaySpeedValueChanged;
+    changeVolume = (ChangeVolume)UserInputManager.GetUserInput(UserInputCode.ChangeVolume);
+    changeVolume.OnValueChanged += OnVolumeValueChanged;
   }
 
   void OnPauseValueChanged(object sender, UserInputEventArgs e)
@@ -74,6 +88,36 @@ public class DanceVideoPlayer : MonoBehaviour
     {
       videoPlayer.Play();
     }
+  }
+
+  void OnFastForwardValueChanged(object sender, UserInputEventArgs e)
+  {
+    videoPlayer.time += 10.0;
+  }
+
+  void OnRewindValueChanged(object sender, UserInputEventArgs e)
+  {
+    videoPlayer.time -= 10.0;
+  }
+
+  void OnRestartValueChanged(object sender, UserInputEventArgs e)
+  {
+    videoPlayer.time = 0;
+  }
+
+  void OnStopValueChanged(object sender, UserInputEventArgs e)
+  {
+    IsEnded = true;
+  }
+
+  void OnPlaySpeedValueChanged(object sender, UserInputEventArgs e)
+  {
+    videoPlayer.playbackSpeed = (float)changePlaySpeed.Data;
+  }
+
+  void OnVolumeValueChanged(object sender, UserInputEventArgs e)
+  {
+    videoPlayer.SetDirectAudioVolume(0, (float)changeVolume.Data);
   }
 
   void MovieEndEvent(VideoPlayer vp)
@@ -95,5 +139,17 @@ public class DanceVideoPlayer : MonoBehaviour
     videoPlayer.url = song.Url;
     videoPlayer.Prepare();
     videoPlayer.loopPointReached += MovieEndEvent;
+  }
+
+  void OnDestroy()
+  {
+    pause.OnValueChanged -= OnPauseValueChanged;
+    playback.OnValueChanged -= OnPlaybackValueChanged;
+    fastForward.OnValueChanged -= OnFastForwardValueChanged;
+    rewind.OnValueChanged -= OnRewindValueChanged;
+    restart.OnValueChanged -= OnRestartValueChanged;
+    stop.OnValueChanged -= OnStopValueChanged;
+    changePlaySpeed.OnValueChanged -= OnPlaySpeedValueChanged;
+    changeVolume.OnValueChanged -= OnVolumeValueChanged;
   }
 }

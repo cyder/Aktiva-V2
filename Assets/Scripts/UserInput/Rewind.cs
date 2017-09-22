@@ -13,7 +13,7 @@ namespace UserInputs
 
     protected override void UpdateData()
     {
-      if (Input.GetKeyDown(KeyCode.LeftAlt))
+      if (Input.GetKeyDown(KeyCode.LeftArrow))
       {
         OnDataUpdated();
       }

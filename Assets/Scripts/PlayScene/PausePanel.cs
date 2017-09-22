@@ -29,4 +29,10 @@ public class PausePanel : MonoBehaviour
       gameObject.SetActive(false);
     }
   }
+
+  void OnDestroy()
+  {
+    pause.OnValueChanged -= OnPauseValueChanged;
+    playback.OnValueChanged -= OnPlaybackValueChanged;
+  }
 }
